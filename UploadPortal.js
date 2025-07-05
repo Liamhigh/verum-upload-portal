@@ -1,35 +1,27 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 function UploadPortal() {
-  const [userType, setUserType] = useState("");
   const [file, setFile] = useState(null);
-  const [status, setStatus] = useState("");
+  const [type, setType] = useState('');
 
-  const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
-  };
-
-  const handleSubmit = () => {
-    if (!userType || !file) {
-      setStatus("Please select a user type and a file.");
-      return;
-    }
-    setStatus("File ready for processing (local only).");
+  const handleUpload = () => {
+    alert(\`Uploading as \${type}: \${file?.name || 'No file selected'}\`);
   };
 
   return (
-    <div style={{ textAlign: "center", marginTop: "40px" }}>
-      <h1>Verum Omnis Upload Portal</h1>
-      <div>
-        <button onClick={() => setUserType("private")}>Private</button>
-        <button onClick={() => setUserType("company")}>Company</button>
-        <button onClick={() => setUserType("institution")}>Institution</button>
+    <div>
+      <p>Are you a:</p>
+      <select value={type} onChange={e => setType(e.target.value)}>
+        <option value="">Select...</option>
+        <option value="Private Person">Private Person</option>
+        <option value="Company">Company</option>
+        <option value="Institution">Institution</option>
+      </select>
+
+      <div style={{ marginTop: 20 }}>
+        <input type="file" onChange={e => setFile(e.target.files[0])} />
+        <button onClick={handleUpload} disabled={!file || !type}>Upload</button>
       </div>
-      <p>Selected User Type: <strong>{userType || "None"}</strong></p>
-      <input type="file" onChange={handleFileChange} />
-      <br />
-      <button onClick={handleSubmit} style={{ marginTop: "10px" }}>Submit</button>
-      <p>{status}</p>
     </div>
   );
 }
