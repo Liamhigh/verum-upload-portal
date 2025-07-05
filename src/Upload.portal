@@ -1,0 +1,11 @@
+import React from 'react';
+
+function UploadPortal() {
+  return (
+    <div>
+      <p>Upload documents here (Verum-secured).</p>
+    </div>
+  );
+}
+
+export default UploadPortal;
