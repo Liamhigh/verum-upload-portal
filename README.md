@@ -72,3 +72,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 // dummy change to allow HEAD^
 // dummy commit to fix HEAD^ error
 // redeploy trigger
+// final redeploy to show logo
